@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Copy </title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center; /* Centers horizontally */
+            align-items: center;    /* Centers vertically */
+            height: 100vh;          /* Full height of the viewport */
+            margin: 0;              /* Remove default body margin */
+           }
+        /* Style for the copy text */
+        #text {
+            font-size: 30px;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            background-color: #026ddfe1;
+            padding: 10px 20px;
+            border-radius: 8px;
+            display: inline-block;
+            cursor: pointer;
+            border: 4px solid #000;
+            user-select: none; /* Prevent text selection */
+        }
+
+        #text:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="text">COPY ME</div>
+
+    <script>
+        // Listen for the copy event
+        document.addEventListener('copy', function (event) {
+            event.preventDefault();
+            const textToCopy = 'Now you are hacked bro'; // Custom text to copy
+            event.clipboardData.setData('text/plain', textToCopy);
+        });
+
+        // Add a click event to trigger the copy programmatically
+        document.getElementById('text').addEventListener('click', function () {
+            navigator.clipboard.writeText('Now you are hacked my bro!')
+                .then(() => alert('Text copied to clipboard!'))
+                .catch(err => console.error('Failed to copy text:', err));
+        });
+    </script>
+
+</body>
+</html>
